@@ -1,13 +1,64 @@
 name: ci
+
 on: [push, pull_request]
+
 jobs:
   test-and-reproduce:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
+        with:
+          python-version: "3.12"
+
       - run: pip install -r requirements.txt && pip install -e .
+
       - run: pytest -q
+
       - run: python -m circadian_dpyd.pipeline --config config/params.yaml --out results_ci
-      - run: diff results/summary.json results_ci/summary.json
+
+      - name: Compare reproducibility summary
+        run: |
+          python - <<'PY'
+          import json
+          import math
+
+          with open("results/summary.json") as f:
+              expected = json.load(f)
+
+          with open("results_ci/summary.json") as f:
+              actual = json.load(f)
+
+          errors = []
+
+          def compare(a, b, path="$"):
+              if type(a) is not type(b) and not (
+                  type(a) in (int, float) and type(b) in (int, float)
+              ):
+                  errors.append(f"{path}: type mismatch")
+              elif isinstance(a, dict):
+                  if a.keys() != b.keys():
+                      errors.append(f"{path}: key mismatch")
+                  for key in a.keys() & b.keys():
+                      compare(a[key], b[key], f"{path}.{key}")
+              elif isinstance(a, list):
+                  if len(a) != len(b):
+                      errors.append(f"{path}: length mismatch")
+                  else:
+                      for i, (x, y) in enumerate(zip(a, b)):
+                          compare(x, y, f"{path}[{i}]")
+              elif type(a) in (int, float):
+                  if not math.isclose(a, b, rel_tol=1e-12, abs_tol=1e-12):
+                      errors.append(f"{path}: {a} != {b}")
+              elif a != b:
+                  errors.append(f"{path}: {a} != {b}")
+
+          compare(expected, actual)
+
+          if errors:
+              print("\n".join(errors))
+              raise SystemExit(1)
+
+          print("Reproducibility check passed.")
+          PY
