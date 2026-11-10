@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "circadian-dpyd-cea: in silico cost-effectiveness of circadian-adjusted DPYD phenotyping"
+authors:
+  - name: "Jashuva-T"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-11-10

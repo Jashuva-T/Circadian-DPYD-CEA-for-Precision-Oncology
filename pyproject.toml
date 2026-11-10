@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "circadian-dpyd-cea"
+version = "0.1.0"
+description = "In silico cost-effectiveness model of circadian-adjusted DPYD phenotyping for fluoropyrimidine therapy"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+authors = [{ name = "Jashuva-T" }]
+dependencies = ["numpy>=1.26", "scipy>=1.11", "pandas>=2.1", "matplotlib>=3.8", "pyyaml>=6.0"]
+
+[project.scripts]
+circadian-dpyd = "circadian_dpyd.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

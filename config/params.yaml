@@ -1,0 +1,115 @@
+meta:
+  seed: 20261110
+  n_psa: 10000
+  wtp: 30000
+  discount: 0.035
+  horizon_months: 60
+  treatment_cycles: 6
+
+genetics:
+  alleles:
+    "c.1905+1G>A": {freq: 0.0060, activity: 0.0}
+    "c.1679T>G": {freq: 0.0010, activity: 0.0}
+    "c.2846A>T": {freq: 0.0040, activity: 0.5}
+    "c.1129-5923C>G": {freq: 0.0200, activity: 0.5}
+  nm_threshold: 2.0
+  im_threshold: 1.0
+
+circadian:
+  fold_change: 2.4
+  pp4: 0.83
+  zt_peak: 15.0
+  base_score: 2.0
+  nm_im_threshold: 1.5
+  scenarios:
+    full_day: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+    daytime: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+  time_distribution: uniform_discrete
+
+recurrence:
+  p_recurrent_cycle: null
+  cost_recurrent_event: null
+  note: "Not parameterized in the primary analysis. Recurrent toxicity is not assumed absent; it is not estimated without a defensible recurrence probability and unit cost."
+
+abstract_benchmarks:
+  nm_reclassifications_per_100: [8.0, 12.0]
+  toxicity_events_prevented_per_100: [1.7, 2.4]
+  hospitalization_costs_averted_per_100_eur: [3900, 5600]
+  icer_eur_per_qaly: 15278
+  probability_cost_effective: 0.892
+  probability_dominant: 0.413
+  break_even_reclassification_per_100: 4.0
+  note: "Abstract-reported benchmarks only; not calibration targets or model inputs."
+
+parameters:
+  p_tox_cum:
+    value: 0.20
+    dist: {type: beta, mean: 0.20, sd: 0.04}
+    status: assumption
+    source: "Author-selected cumulative Grade 3-4 toxicity risk over the treatment course; not independently validated in this model."
+
+  rr_im:
+    value: 2.5
+    dist: {type: lognormal, mean: 2.5, sd: 0.6}
+    status: assumption
+    source: "Author-selected toxicity risk ratio for intermediate metabolizers."
+
+  rr_pm:
+    value: 8.0
+    dist: {type: lognormal, mean: 8.0, sd: 2.0}
+    status: assumption
+    source: "Author-selected toxicity risk ratio for poor metabolizers."
+
+  dose_red_effect:
+    value: 0.70
+    dist: {type: beta, mean: 0.70, sd: 0.10}
+    status: assumption
+    source: "Fraction of excess toxicity risk removed by dose reduction; author-selected assumption."
+
+  p_death_tox:
+    value: 0.010
+    dist: {type: beta, mean: 0.010, sd: 0.004}
+    status: assumption
+    source: "Author-selected probability of death following a severe toxicity event."
+
+  bg_mortality_yr:
+    value: 0.02
+    dist: {type: fixed}
+    status: assumption
+    source: "Simplified annual background mortality assumption."
+
+  cost_tox_event:
+    value: 2300
+    dist: {type: gamma, mean: 2300, sd: 500}
+    status: assumption
+    source: "Author-selected illustrative EUR cost per first severe toxicity event. The value is numerically aligned with an arithmetic ratio of abstract-reported savings and event counts; it is not an independent empirical unit-cost estimate."
+
+  cost_genotyping:
+    value: 100
+    dist: {type: gamma, mean: 100, sd: 20}
+    status: assumption
+    source: "Author-selected illustrative genotyping cost; shared by Arms B and C."
+
+  cost_decision_support:
+    value: 50
+    dist: {type: uniform, low: 30, high: 50}
+    status: assumption
+    source: "Illustrative electronic decision-support implementation cost, bounded by the abstract's stated EUR 50 per-patient ceiling."
+
+  u_on_treatment:
+    value: 0.78
+    dist: {type: beta, mean: 0.78, sd: 0.05}
+    status: assumption
+    source: "Author-selected utility assumption."
+
+  u_tox:
+    value: 0.50
+    dist: {type: beta, mean: 0.50, sd: 0.10}
+    status: assumption
+    source: "Author-selected utility during a severe toxicity cycle."
+
+  u_done:
+    value: 0.75
+    dist: {type: beta, mean: 0.75, sd: 0.05}
+    status: assumption
+    source: "Author-selected post-treatment utility assumption."

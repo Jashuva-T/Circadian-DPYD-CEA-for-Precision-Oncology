@@ -1,0 +1,47 @@
+{
+  "abstract_reported": {
+    "break_even_reclass_per_100": 4,
+    "events_prevented_per_100": [
+      1.7,
+      2.4
+    ],
+    "hosp_cost_averted_per_100_eur": [
+      3900,
+      5600
+    ],
+    "icer_eur_per_qaly": 15278,
+    "prob_ce": 0.892,
+    "prob_dominant": 0.413,
+    "reclass_per_100": [
+      8,
+      12
+    ]
+  },
+  "base_case": {
+    "d_cost": 3.141117243350209,
+    "d_cost_per_100": 314.1117243350209,
+    "d_qaly": 0.0010980339455537447,
+    "d_qaly_per_100": 0.10980339455537447,
+    "dominant": 0.0,
+    "events_prevented": 0.02049999999999999,
+    "events_prevented_per_100": 2.049999999999999,
+    "hosp_cost_averted_per_100": 4714.999999999997,
+    "icer": 2860.67407667085,
+    "nmb": 29.79990112326213
+  },
+  "break_even_reclass_per_100": 6.2656719239243905,
+  "calibrated_rr_circ": 2.326635679684267,
+  "icer_psa_median": -1837.0160104281597,
+  "note": "Outputs depend on parameters tagged 'assumption' in config/params.yaml; they are not independent confirmation of the abstract.",
+  "phenotype_prevalence": {
+    "IM": 0.060654,
+    "NM": 0.9389609999999999,
+    "PM": 0.000385
+  },
+  "prob_ce": 0.8213,
+  "prob_dominant": 0.5266,
+  "psa_events_prevented_per_100_95ci": [
+    0.5067666095315649,
+    5.10864439552366
+  ]
+}

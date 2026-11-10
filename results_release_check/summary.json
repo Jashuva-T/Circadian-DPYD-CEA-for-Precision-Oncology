@@ -1,0 +1,269 @@
+{
+  "abstract_benchmarks_not_used_for_calibration": {
+    "break_even_reclassification_per_100": 4.0,
+    "hospitalization_costs_averted_per_100_eur": [
+      3900,
+      5600
+    ],
+    "icer_eur_per_qaly": 15278,
+    "nm_reclassifications_per_100": [
+      8.0,
+      12.0
+    ],
+    "note": "Abstract-reported benchmarks only; not calibration targets or model inputs.",
+    "probability_cost_effective": 0.892,
+    "probability_dominant": 0.413,
+    "toxicity_events_prevented_per_100": [
+      1.7,
+      2.4
+    ]
+  },
+  "arms": {
+    "A": "Empiric dosing",
+    "B": "Static CPIC DPYD genotyping",
+    "C": "Static genotyping plus circadian-adjusted phenotyping"
+  },
+  "circadian_scenarios": {
+    "daytime": {
+      "hours": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "maximum_adjusted_score": 2.8235294117647056,
+      "mean_adjusted_score": 2.49247927441327,
+      "minimum_adjusted_score": 1.7868549040332182,
+      "n_hours": 11,
+      "reclassification_rate": 0.0,
+      "reclassifications_per_100": 0.0,
+      "reclassified_hours": []
+    },
+    "full_day": {
+      "hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "maximum_adjusted_score": 2.8235294117647056,
+      "mean_adjusted_score": 2.0,
+      "minimum_adjusted_score": 1.1764705882352942,
+      "n_hours": 24,
+      "reclassification_rate": 0.2916666666666667,
+      "reclassifications_per_100": 29.166666666666668,
+      "reclassified_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "interpretation": "Outputs are conditional on author-selected assumptions. The two dosing-time scenarios are reported independently. Mechanistic reclassification is not forced to match abstract benchmarks. First toxicity events are reported separately from recurrent events, which are not estimated.",
+  "model": "Three-arm cohort state-transition model",
+  "model_scope": {
+    "clinical_validation": "Not performed by this computational model",
+    "colocalization_pp4": "Supplied abstract-reported value; not recomputed by this pipeline",
+    "discount_rate": 0.035,
+    "horizon_months": 60,
+    "perspective": "European payer scenario; cost inputs require validation",
+    "recurrent_toxicity": "Not estimated in primary analysis",
+    "treatment_cycles": 6
+  },
+  "phenotype_prevalence": {
+    "IM": 0.060654000000000007,
+    "NM": 0.9389609999999999,
+    "PM": 0.000385
+  },
+  "scenario_results": {
+    "daytime": {
+      "base_case": {
+        "d_cost": 50.0,
+        "d_qaly": 0.0,
+        "dominant": 0.0,
+        "first_toxicity_events_prevented_per_100": 0.0,
+        "icer": null,
+        "incremental_cost_eur_per_100": 5000.0,
+        "incremental_qalys_per_100": 0.0,
+        "nmb": -50.0,
+        "recurrent_events_estimable": false
+      },
+      "break_even_reclassifications_per_100_nm": 6.508633597977069,
+      "cost_per_first_event": "Exploratory author-selected assumption; not independently sourced empirical unit cost",
+      "dosing_hours_zt": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "first_toxicity_events_prevented_per_100_95ci": [
+        0.0,
+        0.0
+      ],
+      "icer_interpretation": "Not summarized: ICERs are not meaningful in dominant iterations, and are undefined when incremental QALYs are zero. See PSA draws for the iteration-level ICER values.",
+      "median_incremental_cost_eur_per_patient": 39.840825593853424,
+      "median_incremental_nmb_eur_per_patient": -39.840825593853424,
+      "median_incremental_qaly_per_patient": 0.0,
+      "probability_cost_effective": 0.0,
+      "probability_dominant": 0.0,
+      "reclassification": {
+        "hours": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "maximum_adjusted_score": 2.8235294117647056,
+        "mean_adjusted_score": 2.49247927441327,
+        "minimum_adjusted_score": 1.7868549040332182,
+        "n_hours": 11,
+        "reclassification_rate": 0.0,
+        "reclassifications_per_100": 0.0,
+        "reclassified_hours": []
+      },
+      "recurrence": "Not estimated in primary analysis",
+      "scenario": "daytime"
+    },
+    "full_day": {
+      "base_case": {
+        "d_cost": -81.12095688991519,
+        "d_qaly": 0.003098013629716956,
+        "dominant": 1.0,
+        "first_toxicity_events_prevented_per_100": 5.73246526719241,
+        "icer": -26184.82892127452,
+        "incremental_cost_eur_per_100": -8112.09568899152,
+        "incremental_qalys_per_100": 0.3098013629716956,
+        "nmb": 174.06136578142386,
+        "recurrent_events_estimable": false
+      },
+      "break_even_reclassifications_per_100_nm": 6.508633597977069,
+      "cost_per_first_event": "Exploratory author-selected assumption; not independently sourced empirical unit cost",
+      "dosing_hours_zt": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "first_toxicity_events_prevented_per_100_95ci": [
+        1.7485440116977815,
+        12.309784629615173
+      ],
+      "icer_interpretation": "Not summarized: ICERs are not meaningful in dominant iterations, and are undefined when incremental QALYs are zero. See PSA draws for the iteration-level ICER values.",
+      "median_incremental_cost_eur_per_patient": -77.52414455620533,
+      "median_incremental_nmb_eur_per_patient": 161.88614865903457,
+      "median_incremental_qaly_per_patient": 0.0027225556173191556,
+      "probability_cost_effective": 0.9933,
+      "probability_dominant": 0.9616,
+      "reclassification": {
+        "hours": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "maximum_adjusted_score": 2.8235294117647056,
+        "mean_adjusted_score": 2.0,
+        "minimum_adjusted_score": 1.1764705882352942,
+        "n_hours": 24,
+        "reclassification_rate": 0.2916666666666667,
+        "reclassifications_per_100": 29.166666666666668,
+        "reclassified_hours": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "recurrence": "Not estimated in primary analysis",
+      "scenario": "full_day"
+    }
+  }
+}
